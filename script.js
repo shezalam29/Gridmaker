@@ -68,7 +68,23 @@ function addC() {
 
 //Remove a row
 function removeR() {
-    alert("Clicked Remove Row")
+    //alert("Clicked Remove Row")
+
+    // Stores grid element object 
+    let grid = document.getElementById("grid");
+
+    // Stores live collection of rows
+    let rows = document.getElementsByTagName("tr");
+
+    if (rows.length === 0){
+        alert("There is nothing to delete")
+        numRows = 0;
+        numCols = 0; 
+    }
+    else{
+        grid.deleteRow(numRows-1);
+        numRows--;
+    }   
 }
 //Remove a column
 function removeC() {
