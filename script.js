@@ -4,12 +4,17 @@ let colorSelected;
 
 //Add a row
 function addR() {
+    //alert("Clicked Add Row")
+
     // Stores grid element object 
     let grid = document.getElementById("grid");
+
     // Stores live collection of rows
     let rows = document.getElementsByTagName("tr");
-
+    
+    // Creates tr element, stores in row 
     let row = document.createElement("tr");
+
     // Base case if no grid exists yet 
     if (rows.length === 0){
         // Creates one box 
@@ -21,7 +26,7 @@ function addR() {
         numCols++;
     }
 
-    // For every column, creates a new box 
+    // For every column, creates a new box; essentially creating a new row
     else{
         
         for (let i = 0; i < numCols; i++){
@@ -41,6 +46,23 @@ function addR() {
 function addC() {
     //alert("Clicked Add Col")
 
+    // Stores NodeList of tr elements 
+    let row = document.querySelectorAll("tr");
+
+    // Base case if no grid exists yet 
+    if (numRows === 0){
+        addR();
+    }
+
+    // For every row, creates a new box; essentially creating a new column 
+    for (let j = 0; j < numRows; j++){
+        let col = document.createElement("td");
+        col.onclick = function(){
+            this.style.backgroundColor = colorSelected;
+        };
+        row[j].appendChild(col);
+    }
+    numCols++
 }
     
 
