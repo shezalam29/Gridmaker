@@ -3,7 +3,7 @@ let numCols = 0;
 let colorSelected; 
 
 //Add a row
-function addR() {
+function addR(){
     //alert("Clicked Add Row")
 
     // Stores grid element object 
@@ -43,7 +43,7 @@ function addR() {
 }
 
 //Add a column
-function addC() {
+function addC(){
     //alert("Clicked Add Col")
 
     // Stores NodeList of tr elements 
@@ -65,9 +65,8 @@ function addC() {
     numCols++
 }
     
-
 //Remove a row
-function removeR() {
+function removeR(){
     //alert("Clicked Remove Row")
 
     // Stores grid element object 
@@ -76,20 +75,55 @@ function removeR() {
     // Stores live collection of rows
     let rows = document.getElementsByTagName("tr");
 
+    // If there is nothing to delete, alert user
     if (rows.length === 0){
         alert("There is nothing to delete")
         numRows = 0;
         numCols = 0; 
     }
+    // Remove the grid's last child element which is the last row
     else{
-        grid.deleteRow(numRows-1);
+        grid.removeChild(grid.lastElementChild);
+        // Another way to do it is -> grid.deleteRow(numRows-1);
         numRows--;
     }   
 }
+
 //Remove a column
-function removeC() {
-    alert("Clicked Remove Col")
+function removeC(){
+    //alert("Clicked Remove Col")
+
+    // Stores grid element object 
+    let grid = document.getElementById("grid");
+
+    // Stores live collection of cols
+    let cols = document.getElementsByTagName("td");
+
+    // If there is nothing to delete, alert user
+    if (cols.length === 0){
+        alert("There is nothing to delete");
+        numRows = 0; 
+        numCols = 0; 
+    } 
+    
+    // Otherwise, for every row, remove the tr's last child element, the last td
+    // Overall, removes the last column  
+    if (numCols > 0){
+        numCols--;
+         for (let i = 0; i < numRows; i++){
+             let rows = grid.rows[i];
+             rows.removeChild(rows.lastElementChild);
+         }
+        
+    }
+    // Once zero columns reached, reset rows as well
+    else if (numCols === 0){
+        grid.innerHTML = "";
+        numRows = 0; 
+    }
 }
+
+
 //sets global var for selected color
 function selected(){
     colorSelected = document.getElementById("selectedID").value;
