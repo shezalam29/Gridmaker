@@ -133,7 +133,7 @@ function fill(){
     //alert("Clicked Fill All")
 
     // Gets a live list of every td element and stores them into cells
-    cells = document.querySelectorAll('td');
+    cells = document.querySelectorAll("td");
 
     // For every cell in that list, changes the background color to the selected color 
     for (const cell of cells){
@@ -146,5 +146,15 @@ function clearAll(){
 }
 
 function fillU(){
-    alert("Clicked Fill All Uncolored")
+    //alert("Clicked Fill All Uncolored")
+
+    //Gets a live list of every td element and stores them into cells 
+    cells = document.querySelectorAll("td");
+
+    // For every cell in that list, if it is uncolores, changes the background color to the selected color 
+    for (const cell of cells){
+        if (cell.style.backgroundColor === "white" || cell.style.backgroundColor === ""){
+            cell.style.backgroundColor = document.getElementById("selectedID").value; 
+        }
+    }
 }
