@@ -123,7 +123,6 @@ function removeC(){
     }
 }
 
-
 //sets global var for selected color
 function selected(){
     colorSelected = document.getElementById("selectedID").value;
@@ -131,7 +130,15 @@ function selected(){
 }
 
 function fill(){
-    alert("Clicked Fill All")
+    //alert("Clicked Fill All")
+
+    // Gets a live list of every td element and stores them into cells
+    cells = document.querySelectorAll('td');
+
+    // For every cell in that list, changes the background color to the selected color 
+    for (const cell of cells){
+        cell.style.backgroundColor = document.getElementById("selectedID").value;
+    }
 }
 
 function clearAll(){
