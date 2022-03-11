@@ -142,7 +142,15 @@ function fill(){
 }
 
 function clearAll(){
-    alert("Clicked Clear All")
+    //alert("Clicked Clear All")
+
+    // Gets a live list of every td element and stores them into cells
+    cells = document.querySelectorAll("td");
+
+    // For every cell in that list, changes the background color to white
+    for (const cell of cells){
+        cell.style.backgroundColor = "";
+    }
 }
 
 function fillU(){
